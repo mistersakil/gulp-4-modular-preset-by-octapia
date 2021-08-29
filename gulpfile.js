@@ -1,6 +1,7 @@
 import buildImages from "./gulpFiles/BuildImages.js";
 import buildCss from "./gulpFiles/BuildCss.js";
 import buildJs from "./gulpFiles/BuildJs.js";
+import buildFonts from "./gulpFiles/BuildFonts.js";
 import cleanDir from "./gulpFiles/Clean.js";
 
 import gulp from "gulp";
@@ -19,6 +20,7 @@ export default async () => {
   await buildImages();
   await buildCss();
   await buildJs();
+  await buildFonts();
   await server();
   gulp.watch("*.html").on("change", reload);
   gulp
@@ -45,6 +47,7 @@ export const prod = () => {
   buildImages();
   buildCss(true);
   buildJs(true);
+  buildFonts(true);
   server();
   gulp.watch("*.html").on("change", reload);
   gulp
